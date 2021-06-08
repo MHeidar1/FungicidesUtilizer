@@ -9,7 +9,7 @@ import numpy as np
 app = Flask(__name__)
 
 
-@app.route('/checker/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def crop_check():
     Data = request.args.to_dict()
     if Data['type'] == "image":
