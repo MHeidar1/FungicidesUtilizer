@@ -4,7 +4,7 @@ from flask import Flask
 from flask import request
 import tensorflow.keras
 from PIL import Image, ImageOps
-import numpy as np
+from numpy import ndarray, float32, asarray, argmax, set_printoptions
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ app = Flask(__name__)
 def crop_check():
     Data = request.args.to_dict()
     if Data['type'] == "image":
-        np.set_printoptions(suppress=True)
+        set_printoptions(suppress=True)
         model = None
         labels = None
         if Data['crop'] == "tomato":
@@ -31,15 +31,15 @@ def crop_check():
             model = tensorflow.keras.models.load_model('models/corn_keras_model.h5')
             labels = ["Corn Cercospora (Gray) Leaf Spot", "Corn Common Rust", "Corn Healthy",
                       "Corn Northern Leaf Blight"]
-        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+        data = ndarray(shape=(1, 224, 224, 3), dtype=float32)
         image = Image.open('images/'+Data['image'])
         size = (224, 224)
         image = ImageOps.fit(image, size, Image.ANTIALIAS)
-        image_array = np.asarray(image)
-        normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+        image_array = asarray(image)
+        normalized_image_array = (image_array.astype(float32) / 127.0) - 1
         data[0] = normalized_image_array
         prediction = model.predict(data)
-        return labels[np.argmax(prediction, axis=1)[0]]
+        return labels[argmax(prediction, axis=1)[0]]
 
 
 if __name__ == '__main__':
