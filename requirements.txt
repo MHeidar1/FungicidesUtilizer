@@ -7,4 +7,3 @@ tensorflow-cpu~=2.5.0
 numpy~=1.19.5
 Flask~=2.0.1
 Pillow~=8.2.0
-io~=0.3.4
