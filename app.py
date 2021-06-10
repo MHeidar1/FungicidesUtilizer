@@ -5,6 +5,7 @@ from flask import request
 import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
+import base64
 
 app = Flask(__name__)
 
@@ -30,7 +31,7 @@ def crop_check():
         labels = ["Corn Cercospora (Gray) Leaf Spot", "Corn Common Rust", "Corn Healthy",
                   "Corn Northern Leaf Blight"]
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    image = Image.open(request.files['file'])
+    image = Image.open(base64.decodebytes(request.files['file']))
     size = (224, 224)
     image = ImageOps.fit(image, size, Image.ANTIALIAS)
     image_array = np.asarray(image)
