@@ -6,6 +6,7 @@ colorama==0.4.4
 cryptography==2.9.2
 cycler==0.10.0
 Cython==0.29.23
+dataclasses==0.7
 decorator==4.4.2
 Django==3.1.7
 Flask==1.1.4
@@ -25,6 +26,7 @@ matplotlib==3.3.4
 mysql-connector==2.2.9
 networkx==2.5.1
 numpy==1.18.5
+opencv-contrib-python==3.4.8.29
 Pillow==7.2.0
 py==1.9.0
 pycparser==2.20
