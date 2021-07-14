@@ -6,7 +6,6 @@ colorama==0.4.4
 cryptography==2.9.2
 cycler==0.10.0
 Cython==0.29.23
-dataclasses==0.8
 decorator==4.4.2
 Django==3.1.7
 Flask==1.1.4
