@@ -245,7 +245,7 @@ def wheat_rust():
             """INSERT INTO notifications(date, user_id, message, seen) VALUES("%s", "%s","%s",'0')""" % (
                 day0, farmerID, message))
 
-    return ""
+    return " "
 
 
 if __name__ == '__main__':
